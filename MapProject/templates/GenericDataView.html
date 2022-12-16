@@ -1,0 +1,400 @@
+{% extends 'Map.html' %}
+{% block content %}
+
+<div id="data_display""></div>
+
+{% endblock %} 
+
+{% block footer_scripts %}
+    {{ block.super }}
+<script>
+
+    // Model
+
+    let data = JSON.parse('{{data | safe}}');
+    let num = data.features[0].properties.data_for_display.length;
+    
+    var ctype;
+    var title_text;
+    var added_layer = false;
+    
+    function prepare_conclusion_data(ctype, title_text){
+        var conclusion_data = [];
+        var conclusion_area = [];
+
+        for(var i=0; i<data.features.length; i++){
+            var idx = data.features[i].properties.data_semantics.indexOf(title_text);
+            conclusion_data.push(data.features[i].properties.data_for_display[idx]);
+            conclusion_area.push(data.features[i].properties.admin_area_name);
+        }
+        return [conclusion_data, conclusion_area];
+    }
+
+    // Controller
+    
+    function change_view(e){
+        
+        render();
+    }
+
+
+    // View
+    map.createPane('labels');
+    map.getPane('labels').style.zIndex = 650;
+    map.getPane('labels').style.pointerEvents = 'none';
+    var cartodbAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>';
+    var positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+        attribution: cartodbAttribution
+    }).addTo(map);
+    var positronLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+        attribution: cartodbAttribution,
+        pane: 'labels'
+    }).addTo(map);
+
+    function getColor(d) {
+        return d > 50000 ? '#800026' :
+            d > 40000  ? '#BD0026' :
+            d > 30000  ? '#E31A1C' :
+            d > 20000 ? '#FC4E2A' :
+            d > 10000  ? '#FD8D3C' :
+            d > 5000 ? '#FEB24C' :
+            d > 2500   ? '#FED976' : 
+            '#FFEDA0';
+    }
+
+    function style(feature) {
+        return {
+            fillColor: getColor(feature.properties.data_for_display),
+            weight: 2,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7
+        };
+    }
+
+    function info_onAdd(map){
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
+    }
+
+    function info_update(props){
+        this._div.innerHTML = (props ? '<h4>'+ props.data_semantics +'</h4>' +  
+                    ('<b>' + props.admin_area_name + '</b><br />' + '<b>'+ props.data_for_display+ ' </b>' + props.unit)
+                    : 'Hover over a district');
+    }
+
+    function legend_onAdd(map){
+        var div = L.DomUtil.create('div', 'info legend'),
+            grades = [0, 2500, 5000, 10000, 20000, 30000, 40000, 50000],
+            labels = [],
+            from, to;
+
+        for (var i = 0; i < grades.length; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+
+            labels.push('<i style="background:' + getColor(from + 1) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
+        }
+
+        div.innerHTML = labels.join('<br>');
+        return div;
+    }
+    
+    function create_data_select(){
+        if(document.getElementById('title') == null)
+        {var myParent = document.body;
+        var array = data.features[0].properties.data_semantics;
+        var selectList = document.createElement("select");
+        selectList.style.cssText = 'width:200px;height:30px;position:absolute; z-index:999; right:430px; top:500px;'
+        selectList.id = "title";
+        
+        myParent.appendChild(selectList);
+        for (var i = 0; i < array.length; i++) {
+            var option = document.createElement("option");
+            option.value = array[i];
+            option.text = array[i];
+            selectList.appendChild(option);
+        }
+        selectList.addEventListener('change', change_view);}
+    }
+    function create_data_select2(){
+        if(document.getElementById('title2') == null)
+        {var myParent = document.body;
+        var array = data.features[0].properties.data_semantics;
+        // first_element = array[0];
+        // shifted_array = array.shift();
+        // shifted_array.push(first_element);
+        var selectList = document.createElement("select");
+        selectList.style.cssText = 'width:200px;height:30px;position:absolute; z-index:999; right:200px; top:500px;'
+        selectList.id = "title2";
+        
+        myParent.appendChild(selectList);
+        for (var i = 1; i < array.length; i++) {
+            var option = document.createElement("option");
+            option.value = array[i];
+            option.text = array[i];
+            selectList.appendChild(option);
+        }
+        var option = document.createElement("option");
+            option.value = array[0];
+            option.text = array[0];
+            selectList.appendChild(option);
+        selectList.addEventListener('change', change_view);}
+    }
+
+    function create_chart_select(){
+        if(document.getElementById('chartType') == null)
+        {var myParent = document.body;
+        var array = ["bar", "line", "scatter"];
+        var selectList = document.createElement("select");
+        selectList.style.cssText = 'width:150px;height:30px;position:absolute; z-index:999; right:20px; top:500px;'
+        selectList.id = "chartType";
+        
+        myParent.appendChild(selectList);
+        for (var i = 0; i < array.length; i++) {
+            var option = document.createElement("option");
+            option.value = array[i];
+            option.text = array[i];
+            selectList.appendChild(option);
+        }
+
+        selectList.addEventListener('change', change_view);}
+
+    }
+
+    function create_conclusion_chart(){
+        if(document.getElementById('ConclusionChart') == null)
+        {    var myParent = document.body;
+            var conclusion_chart = document.createElement("div");
+            conclusion_chart.style.cssText = "width:800px;height:300px;display:block;position:absolute; z-index:999; right:0px; top:530px;";
+            conclusion_chart.id = "ConclusionChart";
+            myParent.appendChild(conclusion_chart);}
+    }
+
+    function render(){
+        document.getElementById('data_display').innerHTML = '';
+
+        if(num == 1){
+           
+            var info = L.control();
+            info.onAdd = info_onAdd;
+            info.update = info_update;
+            info.addTo(map);
+
+            var legend = L.control({position: 'bottomright'});
+            legend.onAdd = legend_onAdd;
+            legend.addTo(map);
+
+            function highlightFeature(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                    layer.bringToFront();
+                }
+                info.update(layer.feature.properties);
+            }
+
+            function resetHighlight(e) {
+                geojson.resetStyle(e.target);
+                info.update();
+            }
+
+            function zoomToFeature(e) {
+                map.fitBounds(e.target.getBounds());
+            }
+
+            function onEachFeature(feature, layer) {
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: zoomToFeature
+                });
+            }
+
+            if(!added_layer){
+                var geojson = L.geoJson(data, {
+                style: style,
+                onEachFeature: onEachFeature
+                }).addTo(map);
+                added_layer = true;
+            }
+
+        }else{
+            create_data_select();
+            create_data_select2();
+            create_chart_select();
+            create_conclusion_chart();
+
+            ctype = document.getElementById("chartType").value;
+            title_text = document.getElementById("title").value;
+            title2 = document.getElementById("title2").value;
+            console.log(ctype)
+
+            var conclude = prepare_conclusion_data(ctype, title_text);
+            var conclude2 = prepare_conclusion_data(ctype, title2);
+            var conclusion_data1 = conclude[0];
+            var conclusion_data2 = conclude2[0];
+            var conclusion_area = conclude[1];
+            
+            function onEachFeature(feature, layer){
+
+                var plotID = feature.properties.plotID.toString() ;
+                var displaydata = feature.properties.data_for_display;
+                var titlename = feature.properties.admin_area_name.toString();
+                var semantics = feature.properties.data_semantics
+
+                var popupContent = '<div style="width:500px;height:300px" id="' + plotID + '"></div>';
+                layer.bindPopup(popupContent, {maxWidth: 450, closeOnClick: true});
+                layer.on('popupopen', function(e){
+
+                    var myChart = echarts.init(document.getElementById(plotID));
+                    var option = {
+
+                        color: [
+                        '#04686b'
+                        ],
+                        title: {
+                            text: titlename
+                        },
+                        grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '0%',
+                    containLabel: true,
+                     textStyle: {
+                        color: "#fff"
+                    }
+                },
+                        tooltip: {},
+                        legend: {},
+                        xAxis: {
+                            width: 200,
+                            overflow: 'break', // or 'break' to continue in a new line
+
+                            data: semantics,
+                            axisLabel: {
+                            interval: 0,
+                            rotate: 15 //If the label names are too long you can manage this by rotating the label.
+                            }
+                        },
+                        yAxis: {},
+                        series: [{
+                            type: 'bar',
+                            data: displaydata
+                        }]
+                    };
+                    myChart.setOption(option);
+                });
+            }
+
+            var geojsonMarkerOptions = {
+                radius: 8,
+                fillColor: "#ff7800",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
+
+            if(!added_layer){
+                L.geoJSON(data, {
+                onEachFeature: onEachFeature,
+                pointToLayer: function (feature, latlng) {
+                    return L.circleMarker(latlng, geojsonMarkerOptions);
+                }
+            }).addTo(map);
+                added_layer = true;
+            }
+            
+            var conclusionChart = echarts.init(document.getElementById('ConclusionChart'));
+            var option2 = {
+                title: {
+                    text: '',
+                    padding: [30, 0, 0, 180]
+                },
+                color: [
+                    '#fcaf7c',  '#04686b'
+                ],
+                legend: {
+                    orient: 'vertical',
+                    right: 20,
+                    top: 0
+                },
+                grid: {
+                    left: '15%',
+                    right: '4%',
+                    bottom: '1%',
+
+                    containLabel: true,
+                     textStyle: {
+                        color: "#fff"
+                    }
+                },
+                tooltip: {},
+                xAxis: {
+                    type: 'category',
+                    width: 100,
+                    overflow: 'break', // or 'break' to continue in a new line
+
+                    data: [],
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 30, //If the label names are too long you can manage this by rotating the label.
+
+                    }
+                },
+                yAxis: {
+
+                },
+                series: [{
+                    name: 'legend1',
+                    type: 'bar',
+                    data: []
+                },
+                {
+                    name: 'legend2',
+                    type: 'bar',
+                    data: [],
+                   
+                },
+            ],
+                toolbox: {
+            show : true,
+            feature : {
+                dataView : {show: true, onClose: true},
+                onClose: true
+            }
+            },
+            };
+            
+            option2.series[0].type = ctype
+            option2.series[1].type = ctype
+
+            option2.series[0].name = title_text;
+            option2.series[1].name = title2;
+
+            // option2.title.text = title2 + " vs " + title_text;
+            option2.title.text = title_text + " vs " + title2;
+            option2.xAxis.data = conclusion_area
+            option2.series[0].data = conclusion_data1
+            option2.series[1].data = conclusion_data2
+
+            conclusionChart.setOption(option2)
+            }
+    }
+
+    render()
+
+
+
+</script>
+{% endblock %} 

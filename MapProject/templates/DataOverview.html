@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <link href="/leaflet/bootstrap.min.css" rel="stylesheet">
+    <link href="/leaflet/list-groups.css" rel="stylesheet">
+    <link rel="stylesheet" href="/leaflet/leaflet.css" />
+    <script src="/leaflet/echarts.min.js"></script>
+    <script src="/leaflet/leaflet.js"></script>
+    
+<style>
+    body {
+        background-image: url('/leaflet/hongkongmap.png');
+        background-size: 1700px;
+    }
+
+</style>
+
+<body>
+    
+        <div class="list-group" style="position:relative; width: 600px;height: 300px;top: 100px;overflow-y: auto;opacity: 0.85;">
+            {% for g in data_list %}
+            <a href="{{ g.get_abs_url }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <h3 class="mb-0">{{g.table_data.name}}</h6>
+                  <p class="mb-0 opacity-75">{{g.description}}</p>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+        </div>
+</body>
+
+
+
+
+   
+
+
+
+
+  
+
