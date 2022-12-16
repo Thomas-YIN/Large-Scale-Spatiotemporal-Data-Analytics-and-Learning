@@ -1,0 +1,470 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/26412835",
+          "role": "admin_centre",
+          "rel": 2558879,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "中西區 Central and Western District",
+            "name_zh": "中西區",
+          "type": "boundary",
+            "idStr": "zxChart",
+            "displaydata":[25170,0,47540,25070,4390]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1582784,
+            22.2818286
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "role": "admin_centre",
+          "rel": 8191142,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "離島區 Islands District",
+                      "name_zh": "離島區",
+            "idStr": "ldChart",
+            "displaydata":[20570,28570,41350,24040,10770]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            113.9405327, 22.2869254
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/241572623",
+          "role": "admin_centre",
+          "rel": 8480494,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "屯門區 Tuen Mun District",
+            "name_zh": "屯門區",
+            "idStr": "tmChart",
+            "displaydata":[15710,24900,34660,19690,20000]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            113.9770274,
+            22.3908021
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/253290581",
+          "role": "admin_centre",
+          "rel": 2558881,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "南區 Southern District",
+          "name:en": "Southern District",
+          "name_zh": "南區",
+          "type": "boundary",
+          "wikidata": "Q986431",
+          "wikipedia": "zh:南區 (香港)",
+            "idStr": "nChart",
+            "displaydata":[20320,27420,52090,51000,32400]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1564209,
+            22.2489071
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/308769094",
+          "role": "admin_centre",
+          "rel": 8189562,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "西貢區 Sai Kung District",
+          "name:en": "Sai Kung District",
+          "name_zh": "西貢區",
+          "type": "boundary",
+          "wikidata": "Q155697",
+            "idStr": "xgChart",
+            "displaydata":[20310,30210,52410,18040,30240]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.259633,
+            22.3087855
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/313159855",
+          "role": "admin_centre",
+          "rel": 8480823,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "元朗區 Yuen Long District",
+          "name:en": "Yuen Long District",
+          "name_zh": "元朗區",
+          "type": "boundary",
+          "wikidata": "Q871442",
+            "idStr": "ylChart",
+            "displaydata":[20360,30070,32170,9950,20250]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.0259924,
+            22.4445211
+          ]
+        },
+        "id": "node/313159855"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/316731268",
+          "role": "admin_centre",
+          "rel": 8477820,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "沙田區 Sha Tin District",
+          "name:en": "Sha Tin District",
+          "name_zh": "沙田區",
+          "type": "boundary",
+          "wikidata": "Q15019",
+            "idStr": "stChart",
+            "displaydata":[18010,27770,47250,21670,23050]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1899848,
+            22.3835565
+          ]
+        },
+        "id": "node/316731268"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/327185199",
+          "role": "admin_centre",
+          "rel": 8368100,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "荃灣區 Tsuen Wan District",
+          "name:en": "Tsuen Wan District",
+          "name_zh": "荃灣區",
+          "name:zh-Hans": "荃湾区",
+          "name:zh-Hant": "荃灣區",
+          "type": "boundary",
+          "wikidata": "Q878514",
+          "wikipedia": "en:Tsuen Wan District",
+            "idStr": "qwChart",
+            "displaydata":[18500,27130,39020,15820,16860]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1134699,
+            22.3716605
+          ]
+        },
+        "id": "node/327185199"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/358321428",
+          "role": "admin_centre",
+          "rel": 2800201,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "九龍城區 Kowloon City District",
+          "name:en": "Kowloon City District",
+          "name:uk": "Коулун-Сіті",
+          "name_zh": "九龍城區",
+          "name:zh-Hans": "九龙城区",
+          "name:zh-Hant": "九龍城區",
+          "type": "boundary",
+          "wikidata": "Q986415",
+            "idStr": "jlcChart",
+            "displaydata":[16040,35040,37170,20000,9570]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1859756,
+            22.3050024
+          ]
+        },
+        "id": "node/358321428"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/459499268",
+          "role": "admin_centre",
+          "rel": 2558880,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "東區 Eastern District",
+          "name:en": "Eastern District",
+          "name_zh": "東區",
+          "name:zh-Hans": "东区",
+          "name:zh-Hant": "東區",
+          "type": "boundary",
+          "wikidata": "Q727054",
+          "wikipedia": "zh:東區 (香港)",
+            "idStr": "dChart",
+            "displaydata":[20040,31660,39890,32110,11800]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.2215064,
+            22.2824457
+          ]
+        },
+        "id": "node/459499268"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/482150692",
+          "role": "admin_centre",
+          "rel": 7351646,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "葵青區 Kwai Tsing District",
+          "name:en": "Kwai Tsing District",
+          "name:ur": "ضلع کھوئی چھنگ",
+          "name_zh": "葵青區",
+          "name:zh-Hans": "葵青区",
+          "name:zh-Hant": "葵青區",
+          "type": "boundary",
+          "wikidata": "Q877132",
+          "wikipedia": "en:Kwai Tsing District",
+            "idStr": "kqChart",
+            "displaydata":[19490,28790,36510,29490,16990]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1290095,
+            22.3609551
+          ]
+        },
+        "id": "node/482150692"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/490729978",
+          "role": "admin_centre",
+          "rel": 2558883,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "灣仔區 Wan Chai District",
+          "name:en": "Wan Chai District",
+          "name_zh": "灣仔區",
+          "name:zh-Hans": "湾仔区",
+          "name:zh-Hant": "灣仔區",
+          "type": "boundary",
+          "wikidata": "Q986434",
+          "wikipedia": "zh:灣仔區",
+            "idStr": "wzChart",
+            "displaydata":[16000,0,48000,40040,4690]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1724833,
+            22.2790146
+          ]
+        },
+        "id": "node/490729978"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/1295654855",
+          "role": "admin_centre",
+          "rel": 2670978,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "油尖旺區 Yau Tsim Mong District",
+          "name:en": "Yau Tsim Mong District",
+          "name:uk": "Яучіммон",
+          "name_zh": "油尖旺區",
+          "source:name:uk": "https://uk.wikipedia.org/wiki/Коулун",
+          "type": "boundary",
+          "wikidata": "Q157669",
+          "wikipedia": "de:Yau Tsim Mong District",
+            "idStr": "yjwChart",
+            "displaydata":[20040,39070,25970,42190,4320]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1698105,
+            22.3204156
+          ]
+        },
+        "id": "node/1295654855"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/2089480454",
+          "role": "admin_centre",
+          "rel": 2800277,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "黃大仙區 Wong Tai Sin District",
+          "name:en": "Wong Tai Sin District",
+          "name:uk": "Вонтайсінь",
+          "name_zh": "黃大仙區",
+          "name:zh-Hans": "黄大仙区",
+          "name:zh-Hant": "黃大仙區",
+          "source:name:uk": "https://uk.wikipedia.org/wiki/Коулун",
+          "type": "boundary",
+          "wikidata": "Q878503",
+          "wikipedia": "fr:Wong Tai Sin (district)",
+            "idStr": "hdxChart",
+            "displaydata":[19290,27050,35750,13620,12790]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1943877,
+            22.3420635
+          ]
+        },
+        "id": "node/2089480454"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/2295984249",
+          "role": "admin_centre",
+          "rel": 9159733,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "北區 North District",
+          "name:en": "North District",
+          "name_zh": "北區",
+          "type": "boundary",
+          "wikidata": "Q868032",
+            "idStr": "bChart",
+            "displaydata":[16740,27290,26490,6730,18630]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1382744,
+            22.4946255
+          ]
+        },
+        "id": "node/2295984249"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/2390266376",
+          "role": "admin_centre",
+          "rel": 2800276,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "觀塘區 Kwun Tong District",
+          "name:en": "Kwun Tong District",
+          "name:uk": "Куньтон",
+          "name_zh": "觀塘區",
+          "source:name:uk": "https://uk.wikipedia.org/wiki/Коулун",
+          "type": "boundary",
+          "wikidata": "Q875773",
+            "idStr": "gtChart",
+            "displaydata":[17760,26950,38930,15310,15940]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.22561,
+            22.312937
+          ]
+        },
+        "id": "node/2390266376"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/2525372140",
+          "role": "admin_centre",
+          "rel": 9159737,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "大埔區 Tai Po District",
+          "name:en": "Tai Po District",
+          "name_zh": "大埔區",
+          "type": "boundary",
+          "wikidata": "Q877813",
+            "idStr": "dbChart",
+            "displaydata":[18500,25190,38020,54250,13820]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1711328,
+            22.4494017
+          ]
+        },
+        "id": "node/2525372140"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "@id": "node/2621314796",
+          "role": "admin_centre",
+          "rel": 2800200,
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "深水埗區 Sham Shui Po District",
+          "name:en": "Sham Shui Po District",
+          "name:uk": "Самсейпоу",
+          "name_zh": "深水埗區",
+          "source:name:uk": "https://uk.wikipedia.org/wiki/Коулун",
+          "type": "boundary",
+          "wikidata": "Q655626",
+          "wikipedia": "de:Sham Shui Po (Distrikt)",
+            "idStr": "ssbChart",
+            "displaydata":[16800,26900,26890,11440,3350]
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            114.1608545,
+            22.32819
+          ]
+        },
+        "id": "node/2621314796"
+      }
+    ]
+}
