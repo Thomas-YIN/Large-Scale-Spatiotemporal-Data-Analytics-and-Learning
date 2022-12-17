@@ -14,6 +14,6 @@ Since this project is developed using the Django framework, it is a prerequisite
 1. `cd` to the working directory where the virtual environment was created. Run `source bin/activate` to activate your virtual environment.
 2. `cd` to the project directory where there is a `manage.py` file at the root. Run `python manage.py runserver` to start your server.
 3. Click the link displayed in the terminal, and add `/home/` at the end of the link to jump to the project home page.
-4. Start browsing the project. :stuck_out_tongue_winking_eye:    
+4. Start exploring the project. :stuck_out_tongue_winking_eye:    
 
 If you are still unclear about getting started with Django, check [this django tutorial](https://www.youtube.com/watch?v=F5mRW0jo-U4&t=2791s) out.
